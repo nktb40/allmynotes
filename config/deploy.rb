@@ -1,9 +1,9 @@
 require "bundler/capistrano"
 
-server "192.168.1.103", :web, :app, :db, primary: true
+server "192.210.132.65", :web, :app, :db, primary: true
 
 set :application, "allmynotes"
-set :user, "nktb40"
+set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
