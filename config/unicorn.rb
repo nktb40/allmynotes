@@ -1,4 +1,4 @@
-root = "/home/deployer/apps/allmynotes/current"
+root = "/home/nktb40/apps/allmynotes/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
