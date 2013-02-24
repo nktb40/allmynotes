@@ -153,6 +153,7 @@ DEPENDENCIES
   devise
   jquery-rails
   less-rails
+  libv8 (= 3.11.8.13)
   pg
   rails (= 3.2.9)
   sass-rails (~> 3.2.3)
