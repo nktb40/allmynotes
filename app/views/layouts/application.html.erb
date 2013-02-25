@@ -8,6 +8,18 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script language="javascript" type="text/javascript">
+	function appendForm() {
+		$(".content-nav").after("<div class='form-panel'> <%= escape_javascript(render(:partial =>'notes/form')) %> </div>");
+		$(".add-btn").attr("onClick","hideForm()");
+		$(".add-btn").html("<i class='icon-arrow-up icon-white'></i> Скрыть");
+   }
+   function hideForm() {
+	 $(".form-panel").remove();
+	 $(".add-btn").html("<i class='icon-plus icon-white'></i> Добавить заметку");
+	 $(".add-btn").attr("onClick","appendForm()");
+	}
+	</script>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top navbar-inverse">
@@ -30,7 +42,7 @@
       </div>
     </div>	
 	</div>
-	<div class="container">
+	<div class="container main_panel">
 	<% flash.each do |name, msg| %>
 	<div class="alert alert-<%= name == :notice ? 'success' : 'error' %>">
 		<a class="close" data-dismiss="alert">&times</a>
@@ -51,16 +63,22 @@
 			</ul>
 		</div>
 		<div class="span9">
-			<div class="navbar">
+			<div class="navbar content-nav">
 			  <div class="navbar-inner">
-			    <form class="navbar-form pull-left">
-					  <%= text_field_tag "note",'', :class=>"span2 new-note-input", 
-					  :title=>"Title", 
-					  :content=> ''%>
-					  <button type="submit" class="btn">
-					  	<i class="icon-plus icon-white"> Add note</i>
+				 <div class="btn-group" >
+					  <button class="btn add-btn" onClick="appendForm()">
+							<i class="icon-plus icon-white"></i>
+							 Добавить заметку					  
 					  </button>
-				 </form>
+					  <button class="btn dropdown-toggle" data-toggle="dropdown">
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu">
+					    <li><%= link_to "Ссылка"%> </li>
+					    <li><%= link_to "Текст"%> </li>
+					    <li><%= link_to "Изображение"%> </li>
+					  </ul>
+				  </div>
 				 
 			    <div class="btn-group pull-right">
 				  <button class="btn"><i class="icon-list"></i></button>

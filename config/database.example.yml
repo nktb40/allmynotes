@@ -50,7 +50,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: AllMyNotes_production
+  database: allmynotes_production
   pool: 5
-  username: AllMyNotes
-  password:
+  host: localhost
+  username: allmynotes
+  password: c72858nik472
