@@ -1,8 +1,8 @@
 class NotesController < ApplicationController
-  # GET /notes
-  # GET /notes.json
+  before_filter :authenticate_user! 
   def index
-    @notes = Note.all(:order => 'created_at DESC')
+    @user = current_user
+    @notes = @user.notes.all(:order => 'created_at DESC')
     @note = Note.new
 
     respond_to do |format|
@@ -41,13 +41,13 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(params[:note])
+    @user = current_user
+    @note = @user.notes.new(params[:note])
+	 if @note.title == ""
+	    @note.title = "No title"
+	 end
     respond_to do |format|
       if @note.save
-         if @note.title == ""
-		    	@note.title = "Note#"+@note.id.to_s
-		    	@note.save
-		   end
         format.html { redirect_to notes_path, notice: 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else

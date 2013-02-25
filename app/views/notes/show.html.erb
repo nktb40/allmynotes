@@ -3,15 +3,13 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
-<dl class="dl-horizontal">
+<dl class="dl">
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @note.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
   <dd><%= @note.link %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @note.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @note.user_id %></dd>
 </dl>
 
 <div class="form-actions">
