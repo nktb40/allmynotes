@@ -19,7 +19,7 @@
       <tr>
         <td><%= note.id %></td>
         <td><%= link_to note.title, note_path(note) %></td>
-        <td><%= link_to note.link, "http://#{note.link}", :target => "_blank" %></td>
+        <td><%= link_to note.link, url_with_protocol(note.link), :target => "_blank" %></td>
         <td><%= note.description %></td>
         <td><%= note.user_id %></td>
         <td><%=l note.created_at %></td>
