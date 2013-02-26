@@ -5,7 +5,6 @@
     <tr>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:link) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -13,10 +12,16 @@
   <tbody>
     <% @notes.each do |note| %>
       <tr>
-        <td><%= link_to truncate(note.title, :length => 15, :separator => '...'), note_path(note) %></td>
-        <td><%= link_to truncate(note.link, :length => 20, :separator => '...'), url_with_protocol(note.link), :target => "_blank" %></td>
-        <td><%= truncate(note.description, :length => 50, :separator => '...') %></td>
-        <td><%= note.created_at.strftime("%d %b %y") %></td>
+        <td><%= link_to truncate(note.title, :length => 20, :separator => '...'), note.title, :remote=>true %></td>      
+        <td><%= link_to truncate(note.link, :length => 20, :separator => '...'),
+         url_with_protocol(note.link), :target => "_blank", :title => "To link: "+note.link %></td>
+        <td>
+            <% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
+				<%= note.created_at.strftime("%H:%M") %>       		
+        		<% else %>
+        		<%= note.created_at.strftime("%d %b %y") %>
+        		<% end %>
+        </td>
         <td>
         <div class="btn-group">
           <%= link_to "Show", note, :class => 'btn btn-mini' %>

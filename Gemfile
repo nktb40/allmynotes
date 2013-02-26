@@ -6,19 +6,15 @@ gem 'rails', '3.2.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
 gem 'devise'
-
+gem 'nokogiri'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'coffee-rails', '~> 3.2.1'
 gem 'uglifier', '>= 1.0.3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  
   gem "therubyracer", "~> 0.10.2"
   gem 'less-rails'  
   gem 'twitter-bootstrap-rails'

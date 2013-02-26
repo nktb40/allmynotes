@@ -6,3 +6,4 @@ jQuery ->
   trigger: 'click'})
   $(".tooltip").tooltip()
   $("a[rel=tooltip]").tooltip()
+  

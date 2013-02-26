@@ -44,7 +44,9 @@ class NotesController < ApplicationController
     @user = current_user
     @note = @user.notes.new(params[:note])
 	 if @note.title == ""
-	    @note.title = "No title"
+	    params = parse_html(@note)
+	    @note.title = params[0]
+	    @note.description = params[1]
 	 end
     respond_to do |format|
       if @note.save
