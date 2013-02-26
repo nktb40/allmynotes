@@ -12,7 +12,7 @@
   <tbody>
     <% @notes.each do |note| %>
       <tr>
-        <td><%= link_to truncate(note.title, :length => 20, :separator => '...'), note.title, :remote=>true %></td>      
+        <td><%= link_to truncate(note.title, :length => 20, :separator => '...'), note, :title => note.title %></td>      
         <td><%= link_to truncate(note.link, :length => 20, :separator => '...'),
          url_with_protocol(note.link), :target => "_blank", :title => "To link: "+note.link %></td>
         <td>
