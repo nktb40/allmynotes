@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
   <dd><%= link_to @note.link, url_with_protocol(@note.link), :target => "_blank" %></dd><br/>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @note.description.gsub("\n", '<br />').html_safe.gsub("\n", 'iii') %></dd>
+  <dd><%= simple_format(@note.description).gsub("\n", "").html_safe %></dd>
 </dl>
 
 <div class="form-actions">
