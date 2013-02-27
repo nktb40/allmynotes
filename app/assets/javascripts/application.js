@@ -15,7 +15,3 @@
 //= require twitter/bootstrap
 //= require_tree .
 
-$(document).ready(function(){       
-$('#modal-from-dom').modal('hide')
-    
-}); 
