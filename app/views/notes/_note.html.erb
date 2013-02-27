@@ -5,9 +5,22 @@
   </div>
   <div class="modal-body">
     <p><%= link_to @note.link, url_with_protocol(@note.link), :target => "_blank" %></p>
-    <p><%= simple_format(@note.description) %></p>
+    <p>
+    <% if @note.text.to_s == '' %>
+    	<%= simple_format(@note.description) %>
+    <% else %>
+    	<%= simple_format(@note.text) %>
+    <% end %>
+    </p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_note_path(@note), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              note_path(@note),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
   </div>
 </div>');

@@ -1,3 +1,3 @@
-function hideForm() {
-	$(".content-nav").after("<h1>Hello</h1>");
-}
+$('.note-modal').on('hidden', function () {
+	  $(".note-modal").remove();
+	});

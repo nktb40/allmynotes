@@ -1,8 +1,10 @@
+<div class="modal form-modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> <br/>
+    <h3 id="modalLabel"> New note <i class="icon-pencil"></i></h3>
+</div>
+<div class="modal-body">
 <%= form_for @note, :html => { :class => 'form' } do |f| %>
-
-  <div>
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-  </div></br>
   <div class="control-group">
     <%= f.label :link, :class => 'control-label' %>
     <div class="controls">
@@ -16,9 +18,14 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
+    <%= f.label :text, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :description, :class => 'text_area', :cols => 10 %>
+      <%= f.text_area :text, :class => 'text_area' %>
     </div>
   </div>
+  <div class="modal-footer">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
 <% end %>
+</div>
+</div>

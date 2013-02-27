@@ -42,7 +42,7 @@ class NotesController < ApplicationController
 	 if @note.title == ""
 	    @note.title = params[0]
 	 end
-	 if @note.description == ""
+	 if @note.description.to_s == ''
 	 	 @note.description = params[1]
 	 end
     respond_to do |format|
@@ -82,5 +82,9 @@ class NotesController < ApplicationController
       format.html { redirect_to notes_url }
       format.json { head :no_content }
     end
+  end
+  def destroy_multiple
+    Note.destroy(params[:note_ids])
+    redirect_to notes_path
   end
 end

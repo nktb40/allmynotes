@@ -1,4 +1,4 @@
 class Note < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :description, :link, :title, :user_id
+  attr_accessible :description, :link, :title, :user_id, :text
 end
