@@ -1,0 +1,25 @@
+<% @notes.each do |note| %>
+ <div class="item_note" >
+	 <ul class="item_panel">
+	 	<li class="list_item hidden-phone">
+	 	<%= check_box_tag "note_ids[]", note.id %>
+	 	</li>
+	 	<li class="list_item span3">
+	 	<%= link_to truncate(note.title, :length => 40, :separator => '...'),
+	 	 note, :title => note.title, :remote => true %>
+	 	</li>
+	 	<li class="list_item span3 hidden-phone">
+	 	<%= link_to truncate(note.link, :length => 40, :separator => '...'),
+         url_with_protocol(note.link), :target => "_blank",
+          :title => "To link: "+note.link %>
+	 	</li>
+	 	<li class="list_item hidden-phone">
+	 	<% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
+		<%= note.created_at.strftime("%H:%M") %>       		
+  		<% else %>
+  		<%= note.created_at.strftime("%d %b %y") %>
+  		<% end %>
+	 	</li>
+	 </ul>
+ </div>
+ <% end %>

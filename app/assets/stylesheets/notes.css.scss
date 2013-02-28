@@ -1,10 +1,38 @@
 .main_panel{
 	margin-top: 60px;
 	}
+.body{
+	padding-left: 0;
+	padding-right: 0;	
+	}
 .text_area{
-	height: 100px;
+	max-height: 50px;
 	width: 97%;	
 	}
 .text_field{
 	width: 97%;	
+	}
+	
+.item_note{
+	border-bottom: 1px solid #e5e5e5;	
+	height: 30px;
+	width: 100%;
+	}
+.item_panel{
+	display: block;
+	}
+.list_item{
+	display: list-item;
+	list-style-type: none;
+	float: left;
+	margin: 5px;
+	margin-top: 0;	
+	height: 20px;
+	overflow: hidden;
+	}
+.item_note:hover{
+	background-color: #f5f5f5;	
+	}  
+.spann{
+ border: 1px solid;	
 	}
