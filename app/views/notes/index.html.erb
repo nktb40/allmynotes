@@ -1,9 +1,9 @@
 <%= form_tag destroy_multiple_notes_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
  <div class="btn-group" >	
      <button class="btn" type="submit" title="Delete checked"><i class="icon-ban-circle"></i></button>		     
-     <button class="btn"><i class="icon-list"></i></button>
-	  <button class="btn"><i class="icon-th"></i></button>
-	  <button class="btn"><i class="icon-search"></i></button>
+     <button class="btn list-btn"><i class="icon-list"></i></button>
+	  <button class="btn th-btn"><i class="icon-th"></i></button>
+	  <button class="btn search-btn"><i class="icon-search"></i></button>
 	  <button class="btn add-btn" onClick="appendForm()">
 			<i class="icon-plus icon-white"></i>
 			 Add new note				  
