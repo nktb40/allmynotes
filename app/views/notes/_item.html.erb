@@ -13,7 +13,7 @@
          url_with_protocol(note.link), :target => "_blank",
           :title => "To link: "+note.link %>
 	 	</li>
-	 	<li class="list_item hidden-phone">
+	 	<li class="list_item list_item_time hidden-phone">
 	 	<% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
 		<%= note.created_at.strftime("%H:%M") %>       		
   		<% else %>
