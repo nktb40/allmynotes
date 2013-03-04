@@ -54,3 +54,20 @@ body{
 .list_item_time{
 	margin-left: 20px;	
 	}
+.h_li{
+	display: list-item;
+	list-style-type: none;
+	float: left;
+}
+.h_li_l{
+	width: 130px;
+}
+
+.h_ul{
+	display: block;
+	margin-bottom: 0;
+}
+
+.ul_row{
+	margin-left: 0;
+}

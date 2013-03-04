@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_resource
+  helper_method :group_object
+  helper_method :group_list
   protect_from_forgery
   
   protected
@@ -10,6 +12,15 @@ class ApplicationController < ActionController::Base
 	  else
 	    "application"
 	  end
+	end
+	
+	def group_object
+		@group = Group.new
+	end
+	
+	def group_list
+	   @user = current_user
+		@groups = @user.groups.all
 	end
 	
 	def parse_html(note)

@@ -1,7 +1,15 @@
+ <script language="javascript" type="text/javascript" charset="utf-8">
+	function appendForm() {
+	   $(".form-modal").remove();
+		$("body").append("<%= escape_javascript(render(:partial =>'notes/form')) %>");
+		$('.form-modal').modal('show');
+   }
+	</script>
+
 <%= form_tag destroy_multiple_notes_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
  <div class="btn-group center" >	
      <button class="btn search-btn"><i class="icon-search"></i></button>     
-     <button class="btn hidden-phone" type="submit" title="Delete checked"><i class="icon-ban-circle"></i></button>		     
+     <button class="btn hidden-phone" type="submit" title="Delete checked"><i class="icon-trash"></i></button>		     
      <button class="btn list-btn hidden-phone"><i class="icon-list"></i></button>
 	  <button class="btn th-btn hidden-phone"><i class="icon-th"></i></button>
 	  <button class="btn add-btn" onClick="appendForm()">

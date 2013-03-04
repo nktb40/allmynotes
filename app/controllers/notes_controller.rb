@@ -4,19 +4,18 @@ class NotesController < ApplicationController
     @user = current_user
     @notes = @user.notes.all(:order => 'created_at DESC')
     @note = Note.new
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @notes }
     end
   end
-
+  
   # GET /notes/1
   # GET /notes/1.json
   def show
     @note = Note.find(params[:id])
   end
-
+  
   # GET /notes/new
   # GET /notes/new.json
   def new
