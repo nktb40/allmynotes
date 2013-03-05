@@ -1,12 +1,21 @@
+ <script language="javascript" type="text/javascript" charset="utf-8">
+	function appendForm() {
+	   $(".form-modal").remove();
+		$("body").append("<%= escape_javascript(render(:partial =>'notes/form')) %>");
+		$('.form-modal').modal('show');
+   }
+</script>
 <%= form_tag destroy_multiple_notes_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
- <div class="btn-group" >	
-     <button class="btn" type="submit" title="Delete checked"><i class="icon-ban-circle"></i></button>		     
-     <button class="btn list-btn"><i class="icon-list"></i></button>
-	  <button class="btn th-btn"><i class="icon-th"></i></button>
-	  <button class="btn search-btn"><i class="icon-search"></i></button>
+<div class="navbar">
+<div class="navbar-inner">
+ <div class="btn-group center" >	
+     <button class="btn search-btn"><i class="icon-search"></i></button>     
+     <button class="btn hidden-phone" type="submit" title="Delete checked"><i class="icon-trash"></i></button>		     
+     <button class="btn list-btn hidden-phone"><i class="icon-list"></i></button>
+	  <button class="btn th-btn hidden-phone"><i class="icon-th"></i></button>
 	  <button class="btn add-btn" onClick="appendForm()">
 			<i class="icon-plus icon-white"></i>
-			 Add new note				  
+			Add note				  
 	  </button>
 	  <button class="btn dropdown-toggle" data-toggle="dropdown">
 	    <span class="caret"></span>
@@ -17,33 +26,8 @@
 	    <li><%= link_to "Изображение"%> </li>
 	  </ul>
   </div>
+  </div>
+</div> 
 <%- model_class = Note -%>
-<legend>Last notes</legend>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th><%= model_class.human_attribute_name(:Note) %></th>
-      <th><%= model_class.human_attribute_name(:Link) %></th>
-      <th><%= model_class.human_attribute_name(:Created) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @notes.each do |note| %>
-      <tr>
-        <td><%= check_box_tag "note_ids[]", note.id %></td>   
-        <td><%= link_to truncate(note.title, :length => 40, :separator => '...'), note, :title => note.title, :remote => true %></td>      
-        <td><%= link_to truncate(note.link, :length => 40, :separator => '...'),
-         url_with_protocol(note.link), :target => "_blank", :title => "To link: "+note.link %></td>
-         <td>
-            <% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
-				<%= note.created_at.strftime("%H:%M") %>       		
-        		<% else %>
-        		<%= note.created_at.strftime("%d %b %y") %>
-        		<% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<%= render "item" %>
 <% end %>

@@ -86,4 +86,5 @@ class NotesController < ApplicationController
     Note.destroy(params[:note_ids])
     redirect_to notes_path
   end
+  
 end
