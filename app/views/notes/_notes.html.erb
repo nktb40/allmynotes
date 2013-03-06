@@ -1,0 +1,30 @@
+<%= form_tag destroy_multiple_notes_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+ <div class="navbar">
+<div class="navbar-inner">
+ <div class="btn-group center" >	
+     <%= button_tag :name=>"search_btn", :class=>"btn search-btn" do %>
+     		<i class="icon-search"></i>
+     <% end %> 
+     <%= button_tag :name=>"list_btn", :class=>"btn list-btn hidden-phone" do %>
+     		<i class="icon-list"></i>
+     <% end %>    
+     <button class="btn th-btn hidden-phone"><i class="icon-th"></i></button>
+     <button class="btn hidden-phone" type="submit" title="Delete checked"><i class="icon-trash"></i></button>		     
+	  <%= link_to new_note_path, :class=>"btn" do %>
+			<i class="icon-plus icon-white"></i>
+			Add note				  
+	  <% end %>
+	  <button class="btn dropdown-toggle" data-toggle="dropdown">
+	    <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+	    <li><%= link_to "Ссылка"%> </li>
+	    <li><%= link_to "Текст"%> </li>
+	    <li><%= link_to "Изображение"%> </li>
+	  </ul>
+  </div>
+  </div>
+</div> 
+<%- model_class = Note -%>
+	<%= render :partial=>"notes/item" %>
+<% end %>

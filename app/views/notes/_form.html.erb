@@ -1,31 +1,33 @@
-<div class="modal form-modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> <br/>
-    <h3 id="modalLabel"> New note <i class="icon-pencil"></i></h3>
-</div>
-<div class="modal-body">
+
 <%= form_for @note, :html => { :class => 'form' } do |f| %>
+  <div class="control-group">
+    <%= f.label :group, :class => 'control-label' %>
+    <div class="controls">
+       <%= f.select :group_id,
+        options_from_collection_for_select(@groups.all, :id,
+         :title, @note.group_id),
+        include_blank: true %>
+    </div>
+  </div>
   <div class="control-group">
     <%= f.label :link, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :link, :class => 'text_field', :autofocus => true %>
+      <%= f.text_field :link, :class => 'span9', :autofocus => true %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
+      <%= f.text_area :title, :class => 'span9', :rows=>2 %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :text, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :text, :class => 'text_area' %>
+      <%= f.text_area :text, :class => 'text_area span9', :rows=>8 %>
     </div>
   </div>
   <div class="modal-footer">
     <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>
 <% end %>
-</div>
-</div>

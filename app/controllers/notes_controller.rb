@@ -1,9 +1,7 @@
 class NotesController < ApplicationController
   before_filter :authenticate_user! 
   def index
-    @user = current_user
-    @notes = @user.notes.all(:order => 'created_at DESC')
-    @note = Note.new
+    @notes = current_user.notes.all(:order => 'created_at DESC')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @notes }
@@ -20,7 +18,7 @@ class NotesController < ApplicationController
   # GET /notes/new.json
   def new
     @note = Note.new
-
+	 @groups = current_user.groups
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @note }
@@ -30,6 +28,7 @@ class NotesController < ApplicationController
   # GET /notes/1/edit
   def edit
     @note = Note.find(params[:id])
+    @groups = current_user.groups
   end
 
   # POST /notes
