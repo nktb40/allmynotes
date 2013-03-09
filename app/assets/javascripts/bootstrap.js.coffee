@@ -1,5 +1,5 @@
 jQuery ->
-  $(".new-note-input").popover({
+  $(".add_to_group_btn").popover({
   animation: true,
   placement: 'bottom',
   html: true, 

@@ -1,0 +1,14 @@
+<div id="add-to-form">
+<table>
+<% group_list.each do |group| %>	
+	<tr>
+		<td><%= check_box_tag "group_ids[]", group.id %></td>
+		<td><%= group.title %></td>
+	</tr>
+<% end %>
+</table> <br/>
+	<%= button_tag :class=>"btn" do %>
+     		Send
+     <% end %> 
+</div>
+

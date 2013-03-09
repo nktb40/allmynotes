@@ -4,7 +4,7 @@ AllMyNotes::Application.routes.draw do
 
   resources :notes do
   collection do
-      delete 'destroy_multiple'
+      match 'multiple_action'
     end
   end
 

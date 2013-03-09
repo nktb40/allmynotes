@@ -81,9 +81,14 @@ class NotesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def destroy_multiple
-    Note.destroy(params[:note_ids])
-    redirect_to notes_path
-  end
-  
+  def multiple_action
+  	if params[:new_btn]
+    @note = Note.new
+    redirect_to :action=>"new"
+   end
+   if params[:destroy_btn]
+	    Note.destroy(params[:note_ids])
+	    redirect_to notes_path
+   end
+  end 
 end

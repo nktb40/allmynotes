@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
 		@group = Group.new
 	end
 	
+	protected
 	def group_list
 	   @user = current_user
 		@groups = @user.groups.all
