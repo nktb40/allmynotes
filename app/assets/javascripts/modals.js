@@ -9,3 +9,4 @@ $('.delete-confirm').click(function(e) {
   e.preventDefault();
   $('#delete-confirm').data('id', $(this).data('id')).modal('show');
 });
+

@@ -1,15 +1,6 @@
 
 <%= form_for @note, :html => { :class => 'form' } do |f| %>
   <div class="control-group">
-    <%= f.label :group, :class => 'control-label' %>
-    <div class="controls">
-       <%= f.select :group_id,
-        options_from_collection_for_select(@groups.all, :id,
-         :title, @note.group_id),
-        include_blank: true %>
-    </div>
-  </div>
-  <div class="control-group">
     <%= f.label :link, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :link, :class => 'span9', :autofocus => true %>
@@ -28,6 +19,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+	    <%= link_to "Cancel", :back, :class=>"btn" %>
+	    <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>
 <% end %>

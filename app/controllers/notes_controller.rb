@@ -17,12 +17,7 @@ class NotesController < ApplicationController
   # GET /notes/new
   # GET /notes/new.json
   def new
-    @note = Note.new
-	 @groups = current_user.groups
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @note }
-    end
+    @note = Note.new 
   end
 
   # GET /notes/1/edit
@@ -87,7 +82,24 @@ class NotesController < ApplicationController
     redirect_to :action=>"new"
    end
    if params[:destroy_btn]
+   	if params[:note_ids]
 	    Note.destroy(params[:note_ids])
+	   end
+	    redirect_to notes_path
+   end
+   if params[:add_rel_btn]
+	    if params[:note_ids] && params[:group_ids]
+		    params[:note_ids].each do |note|
+		    	params[:group_ids].each do |group|
+		    		if !GroupNoteRel.exists?(:group_id=>[group], :note_id=>[note])
+			    		@rel = GroupNoteRel.new
+			    		@rel.group_id = group
+			    		@rel.note_id = note
+			    		@rel.save
+			    	end
+		    	end
+		    end
+	    end
 	    redirect_to notes_path
    end
   end 

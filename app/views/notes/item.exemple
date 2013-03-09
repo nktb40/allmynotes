@@ -1,75 +1,31 @@
-<ul class="nav nav-tabs nav-stacked">
-  <li><a href="#">
-  <div class="row">
-  		<div class="span1"><input type="checkbox"></input></div>
-  		<div class="span1 offset2"><button>jnjnj</button></div>
-  </div>
-  </a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
+<ul class="notes_list">
+<% @notes.each do |note| %>
+	<li class="item_panel">
+		<%= link_to note do %>
+			<div class="row">
+				<div class="item_left span1 hidden-phone">
+					<%= check_box_tag "note_ids[]", note.id %>				
+				</div>
+				<div class="item_mid span4">
+					<%= note.title %>				
+				</div>
+				<div class="note_time hidden-phone span2">
+					<% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
+					<%= note.created_at.strftime("%H:%M") %>       		
+			  		<% else %>
+			  		<%= note.created_at.strftime("%d %b %y") %>
+			  		<% end %>				
+				</div>	
+				<div class="pull-right btn-group hidden-phone">
+					<%= button_tag "btn", :class=>"btn btn-small preview-btn", :title=>"Preview" do %>
+						<i class="icon-eye-open"></i>
+					<% end %>	
+					<%= button_tag "btn", :class=>"btn btn-small link-to-btn", :title=>"Link to" do %>
+						<i class="icon-share-alt"></i>
+					<% end %>			
+				</div>				
+			</div>
+		<% end %>	
+	</li>
+<% end %>
 </ul>
-<% @notes.each do |note| %>
- <div class="item_note" >
-	 <ul class="item_panel">
-	 	<li class="list_item hidden-phone">
-	 	<%= check_box_tag "note_ids[]", note.id %>
-	 	</li>
-	 	<li class="list_item span3">
-	 	<%= link_to truncate(note.title, :length => 40, :separator => '...'),
-	 	 note, :title => note.title, :remote => true %>
-	 	</li>
-	 	<li class="list_item span3 hidden-phone">
-	 	<%= link_to truncate(note.link, :length => 40, :separator => '...'),
-         url_with_protocol(note.link), :target => "_blank",
-          :title => "To link: "+note.link %>
-	 	</li>
-	 	<li class="list_item list_item_time hidden-phone">
-	 	<% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
-		<%= note.created_at.strftime("%H:%M") %>       		
-  		<% else %>
-  		<%= note.created_at.strftime("%d %b %y") %>
-  		<% end %>
-	 	</li>
-	 </ul>
- </div>
- <% end %>
- 
- 
- <ul class="nav nav-tabs nav-stacked">
-<li class="active  item_note">
-	<%= link_to "" do %>
-	  <div class="row">
-	  		<div class="span1">	
-	  		<input type="checkbox"	 title="Check all"/>  			
-	  		</div>
-	  		<div class="mid_place">	
-	  			Title	
-	  			<p class="pull-right">
-				Created
-		  		</p>
-	  		</div>
-	  </div>
-	 <% end %>
- </li>
-<% @notes.each do |note| %>
-  <li>
-	  <%= link_to note do %>
-	  <div class="row">
-	  		<div class="span1">
-	  			<%= check_box_tag "note_ids[]", note.id %>
-	  		</div>
-	  		<div class="mid_place">
-				<%= truncate(note.title, :length => 40, :separator => '...') %>	  		
-	  			<p class="pull-right"><% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
-				<%= note.created_at.strftime("%H:%M") %>       		
-		  		<% else %>
-		  		<%= note.created_at.strftime("%d %b %y") %>
-		  		<% end %>
-		  		</p>
-	  		</div>
-	  </div>
-	  <% end %>
-  </li>
- <% end %>
- </ul>
-

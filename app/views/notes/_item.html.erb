@@ -1,31 +1,43 @@
-<ul class="notes_list">
+<table class="table">
 <% @notes.each do |note| %>
-	<li class="item_panel">
-		<%= link_to note do %>
-			<div class="row">
-				<div class="item_left span1 hidden-phone">
-					<%= check_box_tag "note_ids[]", note.id %>				
-				</div>
-				<div class="item_mid span4">
-					<%= note.title %>				
-				</div>
-				<div class="note_time hidden-phone span2">
-					<% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
-					<%= note.created_at.strftime("%H:%M") %>       		
-			  		<% else %>
-			  		<%= note.created_at.strftime("%d %b %y") %>
-			  		<% end %>				
-				</div>	
-				<div class="pull-right btn-group hidden-phone">
-					<%= button_tag "btn", :class=>"btn btn-small preview-btn", :title=>"Preview" do %>
-						<i class="icon-eye-open"></i>
+	<tr>
+		<td>
+			<div class="item_left hidden-phone">
+				<%= check_box_tag "note_ids[]", note.id %>				
+			</div>	
+		</td>	
+		<td>
+			<div class="hidden-phone help_links">
+				<%= link_to note, :remote=>true, :title=>"Preview" do %>
+					<i class="icon-eye-open"></i>
+				<% end %>	
+				<% if note.link.to_s != "" %>
+					<%= link_to url_with_protocol(note.link), :target => "_blank" ,
+					 :title=>"Link to "+note.link do %>
+						<i class="icon-share-alt" ></i>
 					<% end %>	
-					<%= button_tag "btn", :class=>"btn btn-small link-to-btn", :title=>"Link to" do %>
-						<i class="icon-share-alt"></i>
-					<% end %>			
-				</div>				
-			</div>
-		<% end %>	
-	</li>
+				<% end %>		
+			</div>			
+		</td>
+		<td>
+			<div class="item_mid span4">
+				<% groups_n = group_list_for_note(note)%>
+				<% groups_n.each do |gr| %>
+					<span class="label label-success"><%= gr.title %></span>
+				<% end %>
+				<%= link_to note.title, note, :title => note.title %>				
+			</div>	
+		</td>
+		<td>
+			<div class="note_time hidden-phone">
+				<% if note.created_at.strftime("%d %b %y") == Time.now.strftime("%d %b %y") %>
+				<%= note.created_at.strftime("%H:%M") %>       		
+		  		<% else %>
+		  		<%= note.created_at.strftime("%d %b %y") %>
+		  		<% end %>				
+			</div>	
+		</td>
+		
+	</tr>
 <% end %>
-</ul>
+</table>

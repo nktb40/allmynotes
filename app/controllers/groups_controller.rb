@@ -14,7 +14,12 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
-	 @notes = @group.notes.all
+	 @rels = @group.group_note_rels.all
+	 @notes = []
+	 @rels.each do |rel|
+	 	@notes << Note.find(rel.note_id)
+	 end
+	 @notes
   end
 
   # GET /groups/new

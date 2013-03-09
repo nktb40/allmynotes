@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   helper_method :group_object
   helper_method :group_list
+  helper_method :group_list_for_note
   protect_from_forgery
   
   protected
@@ -23,6 +24,17 @@ class ApplicationController < ActionController::Base
 	   @user = current_user
 		@groups = @user.groups.all
 	end
+	
+	protected
+	def group_list_for_note(note)
+		 @rels = note.group_note_rels.all
+		 @groups = []
+		 @rels.each do |rel|
+		 	@groups << Group.find(rel.group_id)
+		 end
+		 @groups
+	end
+		
 	
 	def parse_html(note)
 	   require 'nokogiri'

@@ -2,7 +2,7 @@
 <%= form_tag multiple_action_notes_path, :class=>"multi_action_form" do %>
  <div class="navbar">
 <div class="navbar-inner">
- <div class="btn-group center" >	
+ <div class="btn-group" >	
      <%= button_tag :name=>"search_btn", :class=>"btn search-btn" do %>
      		<i class="icon-search"></i>
      <% end %> 
@@ -20,7 +20,7 @@
      		<i class="icon-trash"></i>
      <% end %>
 	  
-	  <%= button_tag :name=>"new_btn", :class=>"btn" do %>
+	  <%= link_to new_note_path, :class=>"btn", :remote=>true do %>
 			<i class="icon-plus icon-white"></i>
 			Add note				  
 	  <% end %>  
@@ -28,10 +28,9 @@
 			<span class="caret"></span>	  
 	  </button>
 	  <ul class="dropdown-menu", name="new_btn" >
-	    <li><%= link_to "Save", "#", :onclick=>"$('.multi_action_form').submit()" %> </li>
-		 <% group_list.each do |group| %>	    
-	    <li><%= link_to group.title %> </li>
-	    <% end %>
+	    <li><%= link_to "Image" %></li>
+	    <li><%= link_to "File" %></li>
+	    <li><%= link_to "Video link" %></li>
 	  </ul>	
   </div>
   </div>
