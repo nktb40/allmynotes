@@ -16,7 +16,8 @@
      	 <i class="icon-folder-open icon-white"></i>
 	  <% end %>
 	  
-	  <%= button_tag :name=>"destroy_btn", :class=>"btn hidden-phone", :title=>"Delete chcked" do %>
+	  <%= button_tag :name=>"destroy_btn", :class=>"btn hidden-phone", data: { confirm: 'Are you sure?' },
+	   :title=>"Delete checked" do %>
      		<i class="icon-trash"></i>
      <% end %>
 	  
