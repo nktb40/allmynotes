@@ -1,13 +1,15 @@
-<div id="add-to-form">
-<table>
-<% group_list.each do |group| %>	
-	<tr>
-		<td class="check_box_td"><%= check_box_tag "group_ids[]", group.id %></td>
-		<td><%= group.title %></td>
-	</tr>
-	
-<% end %>
-</table>
+<div id="add-to-form" >
+<div class="pop-content scrolled">
+	<table>
+	<% group_list.each do |group| %>	
+		<tr>
+			<td class="check_box_td"><%= check_box_tag "group_ids[]", group.id %></td>
+			<td><%= group.title %></td>
+		</tr>
+		
+	<% end %>
+	</table>
+</div>
 <div class="divider_line">
 <div class="pull-right">
 	<%= button_tag :class=>"btn btn-primary", :name=>"add_rel_btn" do %>

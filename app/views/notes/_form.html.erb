@@ -1,5 +1,12 @@
 
 <%= form_for @note, :html => { :class => 'form' } do |f| %>
+
+  <div class="control-group row">
+  		<div class="pull-right">
+		    <%= link_to "Cancel", :back, :class=>"btn" %>
+			 <%= f.submit nil, :class => 'btn btn-primary' %>
+	 </div>
+  </div>
   <div class="control-group">
     <%= f.label :link, :class => 'control-label' %>
     <div class="controls">
@@ -18,8 +25,10 @@
       <%= f.text_area :text, :class => 'text_area span9', :rows=>15 %>
     </div>
   </div>
-  <div class="modal-footer">
-	    <%= link_to "Cancel", :back, :class=>"btn" %>
-	    <%= f.submit nil, :class => 'btn btn-primary' %>
+  <div class="control-group row">
+  		<div class="pull-right">
+		    <%= link_to "Cancel", :back, :class=>"btn" %>
+			 <%= f.submit nil, :class => 'btn btn-primary' %>
+	 </div>
   </div>
 <% end %>

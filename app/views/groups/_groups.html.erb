@@ -1,5 +1,10 @@
 <ul class="nav nav-pills nav-stacked">
-	<li class="active" >
+   <li class="active"><%= link_to new_group_path do %>
+		<i class="icon-plus icon-white"></i>
+		Add group
+	<% end %>   
+   </li>
+	<li>
 		<%= link_to "Latest notes", notes_path %>	
 	</li>
 	<% @groups.each do |group| %>
@@ -24,9 +29,4 @@
 		    </ul>
 		  </li>
 	<% end %>
-   <li><%= link_to new_group_path do %>
-      Add group
-		<i class="icon-plus icon-white"></i>
-	<% end %>   
-   </li>
 </ul>
