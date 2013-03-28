@@ -13,13 +13,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id])
-	 @rels = @group.group_note_rels.all
-	 @notes = []
-	 @rels.each do |rel|
-	 	@notes << Note.find(rel.note_id)
-	 end
-	 @notes
+    @notes = Note.joins(:group_note_rels).where(:group_note_rels=>{:group_id=>params[:id]}).order("created_at DESC")
   end
 
   # GET /groups/new

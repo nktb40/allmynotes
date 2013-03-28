@@ -72,7 +72,7 @@ class NotesController < ApplicationController
     @note.destroy
 
     respond_to do |format|
-      format.html { redirect_to notes_url }
+      format.html { redirect_to (:back) }
       format.json { head :no_content }
     end
   end
@@ -85,7 +85,7 @@ class NotesController < ApplicationController
    	if params[:note_ids]
 	    Note.destroy(params[:note_ids])
 	   end
-	    redirect_to notes_path
+	    redirect_to (:back)
    end
    if params[:add_rel_btn]
 	    if params[:note_ids] && params[:group_ids]
@@ -100,7 +100,7 @@ class NotesController < ApplicationController
 		    	end
 		    end
 	    end
-	    redirect_to notes_path
+	    redirect_to (:back)
    end
   end 
 end
