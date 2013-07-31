@@ -1,4 +1,7 @@
 AllMyNotes::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   resources :groups
   devise_for :users
 
@@ -8,6 +11,14 @@ AllMyNotes::Application.routes.draw do
     end
   end
 
+	namespace :api do
+	  namespace :v1 do
+	    devise_scope :user do
+	      post 'sessions' => 'sessions#create', :as => 'login'
+	      delete 'sessions' => 'sessions#destroy', :as => 'logout'
+	    end
+	  end
+	end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
