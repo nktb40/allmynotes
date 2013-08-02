@@ -1,4 +1,6 @@
 AllMyNotes::Application.routes.draw do
+  
+
   resources :groups
   devise_for :users
 
@@ -8,7 +10,22 @@ AllMyNotes::Application.routes.draw do
     end
   end
 
+	namespace :api do
+	  namespace :v1 do
+	    devise_scope :user do
+	      post 'sessions' => 'sessions#create', :as => 'login'
+	      delete 'sessions' => 'sessions#destroy', :as => 'logout'
+	    end
+	    resources :groups
+	    resources :notes
+	  end
+	end
 
+  root :to => 'notes#index'
+  #devise_for :admin_users, ActiveAdmin::Devise.config
+  #ActiveAdmin.routes(self)
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -58,7 +75,7 @@ AllMyNotes::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'notes#index'
+  
 
   # See how all your routes lay out with "rake routes"
 
