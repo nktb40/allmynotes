@@ -118,6 +118,9 @@ GEM
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
     pg (0.14.1)
+    pg_search (0.4.1)
+      activerecord (>= 3)
+      activesupport (>= 3)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -194,6 +197,7 @@ DEPENDENCIES
   meta_search (>= 1.1.0.pre)
   nokogiri
   pg
+  pg_search
   rails (= 3.2.9)
   sass-rails (~> 3.2.3)
   therubyracer (~> 0.10.2)

@@ -5,7 +5,7 @@ AllMyNotes::Application.routes.draw do
   devise_for :users
 
   resources :notes do
-  collection do
+  	collection do
       match 'multiple_action'
     end
   end

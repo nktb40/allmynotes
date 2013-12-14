@@ -35,5 +35,7 @@ gem 'capistrano'
 gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre' # activeadmin needs this if Rails >= 3.1
 
+gem 'pg_search'
+
 # To use debugger
 # gem 'debugger'

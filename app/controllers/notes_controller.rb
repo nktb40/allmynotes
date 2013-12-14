@@ -76,11 +76,19 @@ class NotesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
   def multiple_action
+   	
+  	if params[:search_btn]
+    	@notes = Note.notes_search(params[:search_field])
+    	render :action=>"index"
+    end
+  
   	if params[:new_btn]
-    @note = Note.new
-    redirect_to :action=>"new"
-   end
+    	@note = Note.new
+    	redirect_to :action=>"new"
+    end
+   
    if params[:destroy_btn]
    	if params[:note_ids]
 	    Note.destroy(params[:note_ids])

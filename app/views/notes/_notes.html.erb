@@ -4,12 +4,12 @@
 <div class="navbar-inner">
  <div class="btn-group" >	
      
-     <%= text_field_tag(:search_field, nil, :class=>"span3", 
-     :placeholder=>"Search", 
-     :style=>"margin-bottom:0; border-right:none; border-top-right-radius:0; border-bottom-right-radius:0") %>
+     <%= text_field_tag(:search_field, nil, :class=>"span3", :placeholder=>"Search", :style=>"margin-bottom:0; border-right:none; border-top-right-radius:0; border-bottom-right-radius:0") %>
+     
      <%= button_tag :name=>"search_btn", :class=>"btn search-btn" do %>
      		<i class="icon-search"></i>
      <% end %> 
+     
      <%= button_tag :name=>"list_btn", :class=>"btn list-btn hidden-phone" do %>
      		<i class="icon-list"></i>
      <% end %>    

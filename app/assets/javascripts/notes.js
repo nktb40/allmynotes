@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	  $('.add-btn').click(function(e) { e.preventDefault(); });
-	  $('.search-btn').click(function(e) { e.preventDefault(); });
+	  //$('.search-btn').click(function(e) { e.preventDefault(); });
 	  $('.list-btn').click(function(e) { e.preventDefault(); });
 	  $('.th-btn').click(function(e) { e.preventDefault(); });
 	  $('.preview-btn').click(function(e) { e.preventDefault(); });
