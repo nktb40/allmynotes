@@ -1,8 +1,12 @@
 
-<%= form_tag multiple_action_notes_path, :class=>"multi_action_form" do %>
+<%= form_tag multiple_action_notes_path, :class=>"multi_action_form" do |f|%>
  <div class="navbar">
 <div class="navbar-inner">
  <div class="btn-group" >	
+     
+     <%= text_field_tag(:search_field, nil, :class=>"span3", 
+     :placeholder=>"Search", 
+     :style=>"margin-bottom:0; border-right:none; border-top-right-radius:0; border-bottom-right-radius:0") %>
      <%= button_tag :name=>"search_btn", :class=>"btn search-btn" do %>
      		<i class="icon-search"></i>
      <% end %> 
@@ -28,7 +32,7 @@
 	  <button class="btn dropdown-toggle" data-toggle="dropdown" >
 			<span class="caret"></span>	  
 	  </button>
-	  <ul class="dropdown-menu", name="new_btn" >
+	  <ul class="dropdown-menu pull-right", name="new_btn" >
 	    <li><%= link_to "Image" %></li>
 	    <li><%= link_to "File" %></li>
 	    <li><%= link_to "Video link" %></li>

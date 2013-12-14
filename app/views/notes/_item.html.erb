@@ -23,7 +23,9 @@
 			<div class="item_mid span4">
 				<% groups_n = group_list_for_note(note)%>
 				<% groups_n.each do |gr| %>
-					<span class="label label-success"><%= gr.title %></span>
+					<%= link_to gr, :class=> "label-link" do %>
+						<span class="label label-success"><%= gr.title %></span>
+					<% end %>
 				<% end %>
 				<%= link_to note.title, note, :title => note.title %>				
 			</div>	

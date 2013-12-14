@@ -10,7 +10,9 @@
 	<% end %>
 	</table>
 </div>
-<div class="divider_line">
+<div class="divider_line btn-group">
+	<%= text_field_tag(:group_search_field, nil, :class=>"span2", 
+	:placeholder=>"Search", :style=>"margin-left:12px") %>
 <div class="pull-right">
 	<%= button_tag :class=>"btn btn-primary", :name=>"add_rel_btn" do %>
      		Send
